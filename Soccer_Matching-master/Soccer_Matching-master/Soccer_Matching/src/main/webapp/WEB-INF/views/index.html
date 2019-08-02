@@ -1,0 +1,176 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<title>Bootstrap Example</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script>
+$(function() {
+$('*.carousel').carousel({
+interval: 3000 * 1 //1000 * 1 = 1second
+});
+});
+</script>
+
+<style>
+/* Make the image fully responsive */
+.carousel-inner img {
+width: 100%;
+height: 100vh;
+opacity: 0.8;
+}
+* {
+margin: 0;
+padding: 0;
+}
+body {
+font-family: Quicksand;
+font-weight: 700;
+}
+.content-wrap {
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+}
+.fly-in-text {
+list-style: none;
+}
+.fly-in-text li {
+display: inline-block;
+margin-right: 20px;
+color: white;
+opacity: 1;
+transition: all 1s ease;
+font-size: 60px;
+font-family: 'Jua';
+font-weight: 1000;
+letter-spacing: -10px;
+}
+.fly-in-text li:nth-child(5) {
+margin-right: 0;
+}
+.enter-button {
+display: block;
+text-align: center;
+font-size: 2em;
+text-decoration: none;
+color: white;
+opacity: 1;
+margin-top: 30px;
+transition: all 0.5s ease 1s;
+width: 50%;
+margin: auto;
+font-family: 'Jua';
+background-color: rgba(255, 255, 255, 0);
+border: 0px;
+}
+.content-hidden .fly-in-text li {
+opacity: 0;
+}
+.content-hidden .fly-in-text li:nth-child(1) {
+transform: translate3d(-30px, 0, 0);
+}
+.content-hidden .fly-in-text li:nth-child(2) {
+transform: translate3d(-15px, 0, 0);
+}
+.content-hidden .fly-in-text li:nth-child(3) {
+transform: translate3d(0px, 0, 0);
+}
+.content-hidden .fly-in-text li:nth-child(4) {
+transform: translate3d(15px, 0, 0);
+}
+.content-hidden .fly-in-text li:nth-child(5) {
+transform: translate3d(30px, 0, 0);
+}
+.content-hidden .enter-button {
+opacity: 0;
+transform: translate3d(0, -30px, 0);
+}
+</style>
+
+</head>
+
+<body>
+<div id="filterDiv" style="width:100%; height:100vh; background-color: #00000038;position:absolute;z-index:10;"></div>
+<div id="demo" class="carousel slide" data-ride="carousel">
+
+<!-- Indicators -->
+<ul class="carousel-indicators">
+<li data-target="#demo" data-slide-to="0" class="active"></li>
+<li data-target="#demo" data-slide-to="1"></li>
+<li data-target="#demo" data-slide-to="2"></li>
+</ul>
+<!-- The slideshow -->
+<div class="carousel-inner">
+
+<div class="carousel-item active">
+<img src="images/soccer1.jpg" alt="Los Angeles" width="100%" height="100vh">
+</div>
+<div class="carousel-item">
+<img src="images/soccer2.jpg" alt="Chicago" width="100%" height="100vh">
+</div>
+<div class="carousel-item">
+<img src="images/soccer3.jpg" alt="New York" width="100%" height="100vh">
+</div>
+<div class="welcome-section content-hidden" onclick="window.location.href='main'" style="cursor:pointer">
+<div class="content-wrap" style="border: 2px solid #cccccc;width:500px;z-index:15;">
+<ul class="fly-in-text" style="text-align:center">
+<li>I</li>
+<li>N</li>
+<li>T</li>
+<li>R</li>
+<li>O</li>
+
+</ul>
+<input class="enter-button" type="button" value="ENTER">
+
+</div>
+</div>
+</div>
+<!-- Left and right controls -->
+<a class="carousel-control-prev" href="#demo" data-slide="prev">
+<span class="carousel-control-prev-icon"></span>
+</a>
+<a class="carousel-control-next" href="#demo" data-slide="next">
+<span class="carousel-control-next-icon"></span>
+</a>
+</div>
+
+<script type="text/javascript">
+$(function() {
+var welcomeSection = $('.welcome-section'),
+enterButton = welcomeSection.find('.enter-button');
+setTimeout(function() {
+welcomeSection.removeClass('content-hidden');
+}, 800);
+enterButton.on('click', function(e) {
+e.preventDefault();
+welcomeSection.addClass('content-hidden').fadeOut();
+});
+});
+</script>
+<script>
+var request = new XMLHttpRequest();
+request.onreadystatechange = msg;
+function msg(){
+	if(request.readyState == request.DONE && request.status == 302){
+		var msg = request.responseText;
+		var parsedMsg = JSON.parse(msg);
+		if(parsedMsg.msg === 1){
+			alert("정상적으로 등록되었습니다.");
+		} else{
+			alert("등록되지 않았습니다.!!!!!");
+		}
+	}
+}
+</script>
+</body>
+
+</html>

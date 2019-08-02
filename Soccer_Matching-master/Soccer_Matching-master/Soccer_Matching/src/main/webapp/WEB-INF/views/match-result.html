@@ -1,0 +1,163 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Bootstrap.css-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!--JQuery.css-->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <!--Bootstrap Jquery.min.js-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!--Proper.js-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <!--BootStrarp.js-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!--Google Font-->
+    <link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet">
+    <!-- JQuery UI -->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+     <link rel="stylesheet" href="css/match-register.css"/>
+     <link rel="stylesheet" href="css/match-result.css"/>
+</head>
+
+<body>
+   <div class="container-fluid">
+      <div id="header" style="width:100%; height:10vh;text-align:center;line-height:10vh;">매치 정보</div>
+       <div class="row">
+          <div class="col-lg-3"></div> <!-- 왼쪽 여백 -->
+          <div class="col-lg-6">
+             <div class="map_wrap">
+                <div id="map" style="height:45vh;overflow:hidden;"></div>
+                <div id="menu_wrap" class="bg_white" style="display:none">
+                    <div class="option">
+                       <div>
+                               <form onsubmit="searchPlaces(); return false;">
+                                키워드 : <input type="text" value="" id="keyword" size="15"> 
+                             <button type="submit">검색하기</button> 
+                            </form>
+                        </div>
+                    </div>
+                    <hr>
+                    <ul id="placesList"></ul>
+                    <div id="pagination"></div>
+                </div>
+             </div>
+             <br/>
+                   <form class="needs-validation" method="POST" novalidate>
+                      <div class="input-group mb-3">
+                         <div class="input-group-prepend">                  
+                           <span class="input-group-text">주 소</span>
+                         </div>
+                         <div class="input-group-prepend" style="flex-direction:column;width:89.5%" >
+                            <input type="text" class="form-control" id="address" placeholder="지도에서 선택해주세요" name="address" required readonly>                   
+                            <input type="text" class="form-control" id="placeName" placeholder="상세주소 입력" name="placeName" readonly required>
+                         </div>
+                       </div>
+                       <div class="row">
+                          <div class="col-lg-4">
+                             <div class="input-group mt-3 mb-3">
+                                <div class="input-group-prepend">
+                                   <span class="input-group-text">경기 일정</span>
+                                </div>
+                                &nbsp;               
+                               <input type="text" class="form-control" id="fixedDate" name="date" placeholder="달력 선택" style="border:0px;padding-left:0px"readonly required>
+                            </div>
+                            <div class="input-group mt-3 mb-3">
+                                <div class="input-group-prepend">
+                                   <span class="input-group-text">경기 타입</span>
+                                </div>
+                                &nbsp;
+                                 <select id="game_type" name="gameType" disabled>
+                                    <option value="" selected disabled>경기타입</option>
+                                    <option value="3 vs 3">3 vs 3</option>
+                                    <option value="4 vs 4">4 vs 4</option>
+                                    <option value="5 vs 5">5 vs 5</option>
+                                    <option value="6 vs 6">6 vs 6</option>
+                                </select>                  
+                            </div>
+                        </div>
+                          <div class="col-lg-4">
+                             <div class="input-group mt-3 mb-3">
+                                <div class="input-group-prepend">
+                                   <span class="input-group-text">시작 시간</span>
+                                </div>
+                                &nbsp;
+                               <select id="start_time" name="startTime" disabled></select>
+                               <select id="start_time_minutes" name="startTimeMinutes" disabled>
+                                    <option value="0" selected>00분</option>
+                                    <option value="30">30분</option>
+                               </select>
+                           </div>
+                           <div class="input-group mt-3 mb-3">
+                                <div class="input-group-prepend">
+                                      <span class="input-group-text">참가 성별</span>
+                                </div>
+                                &nbsp;
+                                 <select id="gender" name="gender" disabled>
+                                    <option value="" selected disabled>성별</option>
+                                    <option value="남성매치">남성매치</option>
+                                    <option value="여성매치">여성매치</option>
+                                    <option value="누구나">누구나</option>
+                                 </select>
+                             </div>
+                          </div>
+                          <div class="col-lg-4">
+                             <div class="input-group mt-3 mb-3">
+                                <div class="input-group-prepend">
+                                   <span class="input-group-text">종료 시간</span>
+                                </div>
+                                &nbsp;
+                               <select id="end_time" name="endTime" disabled></select>
+                               <select id="end_time_minutes" name="endTimeMinutes" disabled>
+                                    <option value="0" selected>00분</option>
+                                    <option value="30">30분</option>
+                               </select>
+                            </div>
+                            <div class="input-group mt-3 mb-3">
+                               <div class="input-group-prepend">
+                                   <span class="input-group-text">신청가능인원</span>
+                                </div>
+                                &nbsp;
+                                 <select id="number_appliable" name="numberAppliable" disabled>
+                                    <option value="" selected disabled>0명</option>
+                                    <option value="1">1명</option>
+                                    <option value="2">2명</option>
+                                    <option value="3">3명</option>
+                                    <option value="4">4명</option>
+                                </select>
+                             </div>
+                          </div>
+                          <div class="input-group mt-3 mb-3">
+                                <div class="input-group-prepend"  style="width:98%;padding-left:15px;height:10vh;">
+                                   <span class="input-group-text">상세 정보</span>
+                                 <textarea class="form-control" id="detailInfo" name="detailInfo" style="height:10vh;" readonly></textarea>                           
+                                </div>
+                          </div>
+                       </div>
+                       <div class="buttongroups" style="display:flex;flex-direction:row;justify-content:space-between;width:70%;margin-left:auto;margin-right:auto;">
+                         <button type="button" class="btn btn-dark" onclick="history.back()" style="width:100px">뒤로가기</button>
+                         <button type="button" id ="edit" class="btn btn-dark" onclick="editMode()" style="width:100px">수&nbsp;정</button>
+                         <button type="button" id ="abort" class="btn btn-dark" onclick="abortMode()" style="width:100px;display:none">지원취소</button>
+                         <button type="button" id ="delete" class="btn btn-dark" onclick="deleteMode()" style="width:100px">삭&nbsp;제</button>
+                         <button type="button" id ="cancel" class="btn btn-dark" onclick="cancelMode()" style="width:100px;display:none">취&nbsp;소</button>
+                         <button type="submit" id ="submit" class="btn btn-dark" style="width:100px;display:none">등&nbsp;록</button>
+                      </div>
+                      <input type="hidden" name="_method" value="put">
+                      <div style="display:none">
+                     	<input type="text" id="x" name="x">
+                     	<input type="text" id="y" name="y">
+                     	<input type="text" id="number" name="number">
+                  	 </div>
+                    </form>
+                  </div>
+          <div class="col-lg-3"></div> <!-- 오른쪽 여백 -->
+       </div>
+   </div>
+   <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6b187315c60d45782c7546f0eaf4d3bc&libraries=services"></script>
+   <script src="js/match-result.js"></script>
+   <script src="js/match-register.js"></script>
+</body>
+
+</html>

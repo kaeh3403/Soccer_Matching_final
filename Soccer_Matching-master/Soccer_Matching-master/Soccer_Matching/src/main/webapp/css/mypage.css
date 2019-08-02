@@ -1,0 +1,167 @@
+html,
+body {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Jua';
+}
+
+body {
+    background-image: url("http://www.musco.co.kr/wp-content/uploads/2018/04/%EC%9A%B8%EC%82%B0%EB%AC%B8%EC%88%98%EC%9B%94%EB%93%9C%EC%BB%B5%EA%B2%BD%EA%B8%B0%EC%9E%A5.png");
+    background-repeat: no-reapeat;
+    background-size: 100% 100vh;
+}
+
+#header {
+    width: 100%;
+    height: 8vh;
+}
+
+#title {
+    margin-top: 30px;
+    font-size: 40px;
+    text-align: center;
+    color: white;
+}
+
+.titleText:hover{
+	cursor:pointer;
+}
+
+#idSection {
+    margin: 0px;
+    font-size: 15pt;
+    text-align: right;
+    color: white;
+}
+
+#calContainer {
+    width: 65%;
+    margin: 5vh auto;
+    background-color: rgba(255, 255, 255, 0.6);
+    padding: 10px;
+}
+
+.fc fc-ltr fc-unthemed {
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+#calContainer table {
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+.fc-time {
+    font-size: 11px;
+}
+
+.modal {
+    text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+    .modal:before {
+        display: inline-block;
+        vertical-align: middle;
+        content: " ";
+        height: 100%;
+    }
+}
+
+.modal-dialog {
+    display: inline-block;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.contentsDiv {
+    display: flex;
+    height: 80px;
+}
+
+.contentsDiv:hover {
+    background-color: #cccccc;
+    cursor: pointer;
+}
+
+.regOrApply {
+    font-family: 'Jua';
+    display: inline-block;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.timeDiv {
+    font-family: "Jua";
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 80px;
+    text-align: center;
+}
+
+.contentDiv {
+    font-family: "Jua";
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.table{
+   text-align: center;
+}
+
+.caption{
+   caption-side:top;
+   text-align: center;
+   color: black;
+   font-size: 20px;
+}
+
+.firstHeader,
+.secondHeader {
+    margin-bottom: 0px;
+}
+
+.firstHeader {
+    font-size: 1.2em;
+}
+
+.secondHeader {
+    font-size: 1em;
+    color: #777373;
+}
+
+.dropdown {
+    display: inline-block;
+    margin-right: auto;
+    float: right;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+}
+
+.fc-content:hover{
+	cursor:pointer;
+}
